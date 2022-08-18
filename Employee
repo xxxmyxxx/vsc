@@ -1,0 +1,63 @@
+package MaasHesaplayici;
+
+public class Employee {
+    String name;
+    double salary;
+    double workHours;
+    int hireYear;
+    double tax;
+    double bonus;
+    double raiseSalary;
+    int thisYear=2021;
+
+    Employee(String name,int salary,double workHours,int hireYear){
+        this.name=name;
+        this.salary=salary;
+        this.workHours=workHours;
+        this.hireYear=hireYear;
+    }
+    void tax(){
+
+        if (salary<1000){
+            this.tax=0;
+
+        }else if(salary>=1000){
+            this.tax=salary*0.03;
+
+        }
+
+    }
+    void bonus(){
+        if (this.workHours>40){
+            this.bonus=(this.workHours-40)*30;
+        }else{
+            this.bonus=0;
+        }
+
+    }
+    void raiseSalary(){
+        int howManyYear=this.thisYear-this.hireYear;
+        if (howManyYear<10){
+            this.raiseSalary=salary*0.05;
+            
+        } else if (howManyYear>9 && howManyYear<20) {
+            this.raiseSalary=salary*0.1;
+            
+        } else if (howManyYear>19) {
+            this.raiseSalary=salary*0.15;
+            
+        }
+
+    }
+    void toPrint(){
+        System.out.println("Adi: "+ this.name);
+        System.out.println("Maasi: "+this.salary);
+        System.out.println("Calisma Saati: "+this.workHours);
+        System.out.println("Baslangic Yili: "+this.hireYear);
+        System.out.println("Vergi: "+this.tax);
+        System.out.println("Bonus: "+this.bonus);
+        System.out.println("Maas Artisi: "+this.raiseSalary);
+        System.out.println("Vergi ve Bonus ile Maas: "+(this.salary-this.tax+this.bonus));
+        System.out.println("Toplam Maas : "+(this.salary+this.raiseSalary-this.tax+this.bonus));
+    }
+}
